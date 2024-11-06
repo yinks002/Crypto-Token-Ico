@@ -30,7 +30,7 @@ const index = () => {
     const [buyModel, setBuyModel] = useState(false);
     const [openDonate, setOpenDonate] =useState(false);
     
-    const [TransferCurrency, setTransferCurrency]=useState(false);
+    const [transferCurrency, setTransferCurrency]=useState(false);
     const [openUpdatePrice, setOpenUpdatePrice] =useState(false);
     const [openUpdateAddress, setOpenUpdateAddress] =useState(false);
     const [detail, setDetail] =useState();
@@ -50,7 +50,7 @@ const index = () => {
   <>
   <div className="body_wrap">
     {
-    ownerModel && (
+    !ownerModel && (
       <Owner setOwnerModel= {setOwnerModel} 
     currency={currency}
     detail={detail} account={account} setTransferModel={setTransferModel}
@@ -62,7 +62,7 @@ const index = () => {
     )}
 
     {
-      buyModel && (
+      !buyModel && (
         <Popup 
         setBuyModel={setBuyModel}
         BUY_TOKEN={BUY_TOKEN}
@@ -84,7 +84,7 @@ const index = () => {
       )}
 
       {
-        TransferCurrency && (
+        transferCurrency && (
           <TransferCurrency 
           setTransferCurrency={setTransferCurrency}
           TRANSFER_ETHER={TRANSFER_ETHER}
@@ -130,7 +130,7 @@ const index = () => {
       )
     }
 
-    {loader && <Loader />}
+    {!loader && <Loader />}
     <Header account={account}
     CONNECT_WALLET={CONNECT_WALLET}
     setAccount={setAccount}
@@ -141,8 +141,7 @@ const index = () => {
     currency={currency}
     ownerModel={ownerModel}
     />
-
-    <SideBar />
+  <SideBar />
     <Hero setBuyModel={setBuyModel}
     account={account}
     CONNECT_WALLET={CONNECT_WALLET}
@@ -154,7 +153,7 @@ const index = () => {
     <About />
     <Features/>
     <Token />
-    <TokenInfo detail={detail}/>
+    <TokenInfo detail={detail} currency={currency}/>
     <Team />
     <Faq />
     <Contact />

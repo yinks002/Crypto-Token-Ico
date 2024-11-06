@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Logo from "../public/assets/img/logo/logo.svg"
 
 const Header = ({
      account,
@@ -48,7 +49,9 @@ const Header = ({
       console.log("metamask is not installed")
     }
   }
-  return <header className="site-header header--transparent ico-header">
+  return( 
+  <>
+  <header className="site-header header--transparent ico-header">
     <div className="header__main-wrap">
   <div className="container mxw_1640">
 
@@ -56,7 +59,7 @@ const Header = ({
       <div className="header__left ul_li">
         <div className="header__logo"> 
     <a href="/">
-      <img src="assets/img/logo/logo.svg" alt="" srcset="" />
+      <img src={Logo} alt="" srcSet="" />
     </a>
 
         </div>
@@ -133,7 +136,9 @@ const Header = ({
 
     </div>
     
-    </header>;
+    </header>
+    </>
+    );
 };
 
 export default Header;
